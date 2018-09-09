@@ -10,7 +10,7 @@ class GetKeyFramesTest extends TestCase
     public function testGetVideoInfo()
     {
         $info = new GetKeyFrames();
-        $data = $info->getVideoInfo("/media/ramdisk/s.mkv");
+        $data = $info->getVideoInfo("../samples.mkv");
 
         $this->assertGreaterThan(1, count($data));
     }

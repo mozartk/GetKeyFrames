@@ -2,11 +2,7 @@
 
 namespace mozartk\GetKeyFrames;
 
-use mozartk\GetKeyFrames\Driver\FFPROBEDriver;
-use Monolog\Logger;
 use Symfony\Component\Process\Process;
-use Symfony\Component\Process\Exception\ProcessFailedException;
-use Symfony\Component\Process\ProcessBuilder;
 
 class GetKeyFrames
 {
@@ -31,8 +27,8 @@ class GetKeyFrames
     {
         $arr = array();
         foreach(explode("\n",$data) as $row) {
-            if(trim($row) === "") continue;
-            $field = explode(",", $row);
+            if(trim($row) === '') continue;
+            $field = explode(',', $row);
             if(trim($field[2]) === 'I') {
                 $arr[] = trim($field[3]);
             }
