@@ -6,11 +6,6 @@ use Symfony\Component\Process\Process;
 
 class GetKeyFrames
 {
-    public function run()
-    {
-
-    }
-
     public function getVideoInfo(string $filePath)
     {
 
