@@ -3,11 +3,15 @@
 namespace mozartk\GetKeyFrames\Test;
 
 use PHPUnit\Framework\TestCase;
+use mozartk\GetKeyFrames\GetKeyFrames;
 
 class GetKeyFramesTest extends TestCase
 {
-    public function testTrueIsTrue()
+    public function testGetVideoInfo()
     {
-        $this->assertTrue(true);
+        $info = new GetKeyFrames();
+        $data = $info->getVideoInfo("/media/ramdisk/s.mkv");
+
+        $this->assertGreaterThan(1, count($data));
     }
 }
