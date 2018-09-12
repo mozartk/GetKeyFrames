@@ -12,6 +12,11 @@ class GetKeyFrames
      */
     protected $parser;
 
+    /**
+     * @var ffprobe에서 출력하는 데이터의 형식
+     */
+    protected $ffmpegOutputMode;
+
 
     public function __construct($opt = array())
     {
