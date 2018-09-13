@@ -35,11 +35,11 @@ class GetKeyFrames
      */
     public function getVideoInfo(string $filePath)
     {
+        $process = new \mozartk\GetKeyFrames\Binary\Process();
+        $process->initProcess(array('/usr/local/bin/ffprobe', "-show_frames", "-select_streams", "v", "-show_entries",
+                    "frame=coded_picture_number,pict_type,pkt_dts_time", "-print_format", "csv", $filePath));
 
-        $process = new Process(array('/usr/local/bin/ffprobe', "-show_frames", "-select_streams", "v", "-show_entries",
-                "frame=coded_picture_number,pict_type,pkt_dts_time", "-print_format", "csv", $filePath));
-
-        $process->run();
+        $process->runProcess();
         $data = $process->getOutput();
 
         return $this->parser->parseResult($data);
