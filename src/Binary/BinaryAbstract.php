@@ -2,7 +2,6 @@
 
 namespace mozartk\GetKeyFrames\Binary;
 
-
 abstract class BinaryAbstract implements BinaryInterface
 {
     /**
@@ -21,6 +20,14 @@ abstract class BinaryAbstract implements BinaryInterface
     protected $videoPath;
 
     protected $process;
+
+    public function initProcess()
+    {
+        $this->process = '';
+        $this->videoPath = '';
+        $this->binaryPath = '';
+        $this->arguments = '';
+    }
 
     public function getProcess()
     {

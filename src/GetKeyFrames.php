@@ -35,9 +35,15 @@ class GetKeyFrames
      */
     public function getVideoInfo(string $filePath)
     {
+        $symfony = new Process(array());
+
         $process = new \mozartk\GetKeyFrames\Binary\Process();
-        $process->initProcess(array('/usr/local/bin/ffprobe', "-show_frames", "-select_streams", "v", "-show_entries",
-                    "frame=coded_picture_number,pict_type,pkt_dts_time", "-print_format", "csv", $filePath));
+        $process->initProcess($symfony);
+
+        $process->setBinaryPath('/usr/local/bin/ffprobe');
+        $process->setVideoPath($filePath);
+        $process->setArgs(array('-show_frames', '-select_streams', 'v', '-show_entries',
+            'frame=coded_picture_number,pict_type,pkt_dts_time', '-print_format', 'csv'));
 
         $process->runProcess();
         $data = $process->getOutput();

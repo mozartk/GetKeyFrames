@@ -62,7 +62,7 @@ interface BinaryInterface
      * @param array $opt
      * @return mixed
      */
-    public function initProcess(array $opt);
+    public function initProcess();
 
     /**
      * 실행 준비된 프로세스 받기.

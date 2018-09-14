@@ -2,20 +2,10 @@
 
 namespace mozartk\GetKeyFrames\Binary;
 
-use Symfony\Component\Process\Process as Binary;
-
 class Process extends BinaryAbstract
 {
     public function __construct()
     {
-    }
-
-    public function initProcess(array $opt)
-    {
-        $this->process = new Binary(array());
-        $this->setVideoPath(array_pop($opt));
-        $this->setBinaryPath(array_shift($opt));
-        $this->setArgs($opt);
     }
 
     public function runProcess()
@@ -24,6 +14,8 @@ class Process extends BinaryAbstract
         $processOpt[] = $this->getBinaryPath();
         $processOpt = array_merge($processOpt, $this->getArgs());
         $processOpt[] = $this->getVideoPath();
+
+        $this->process = new \Symfony\Component\Process\Process(array());
 
         $this->process->setCommandLine($processOpt);
 
